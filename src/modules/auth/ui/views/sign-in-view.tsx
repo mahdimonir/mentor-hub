@@ -15,6 +15,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { BRAND_LOGO, BRAND_LOGO_ALT, BRAND_NAME } from "@/consts/brand";
 import { authClient } from "@/lib/auth-client";
 import { OctagonAlertIcon } from "lucide-react";
 import Link from "next/link";
@@ -22,7 +23,6 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaGithub, FaGoogle } from "react-icons/fa";
-
 const formSchema = z.object({
   email: z.string().email("Invalid email address"),
   password: z.string().min(1, { message: "Password is required" }),
@@ -183,9 +183,13 @@ export const SignInView = () => {
             </form>
           </Form>
 
-          <div className="bg-radial from-green-700 to-green-900 relative hidden md:flex flex-col gap-y-4 items-center justify-center">
-            <img src="/logo.svg" alt="Logo" className="h-[92px] w-[92px]" />
-            <p className="text-2xl font-semibold text-white">Mentor-Hub.AI</p>
+          <div className="bg-radial from-sidebar-accent to-sidebar relative hidden md:flex flex-col gap-y-4 items-center justify-center">
+            <img
+              src={BRAND_LOGO}
+              alt={BRAND_LOGO_ALT}
+              className="h-[92px] w-[92px]"
+            />
+            <p className="text-2xl font-semibold text-white">{BRAND_NAME}</p>
           </div>
         </CardContent>
       </Card>
