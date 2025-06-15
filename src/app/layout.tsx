@@ -36,6 +36,13 @@ export const metadata: Metadata = {
   },
 };
 
+/**
+ * Provides the global layout for the application, including font styling, metadata, tRPC provider, and a notification container.
+ *
+ * Wraps all pages with consistent structure and context providers.
+ *
+ * @param children - The page content to render within the layout.
+ */
 export default function RootLayout({
   children,
 }: Readonly<{
