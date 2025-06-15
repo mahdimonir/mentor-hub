@@ -39,7 +39,7 @@ export const columns: ColumnDef<AgentGetOne>[] = [
       >
         <VideoIcon className="text-blue-700" />
         {row.original.meetingCount}{" "}
-        {row.original.meetingCount === 1 ? "meeting" : "5 meetings"}
+        {row.original.meetingCount === 1 ? "meeting" : "meetings"}
       </Badge>
     ),
   },
