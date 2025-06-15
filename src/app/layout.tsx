@@ -1,3 +1,4 @@
+import { Toaster } from "@/components/ui/sonner";
 import {
   BRAND_DESCRIPTION,
   BRAND_FAVICON,
@@ -43,7 +44,10 @@ export default function RootLayout({
   return (
     <TRPCReactProvider>
       <html lang="en">
-        <body className={`${inter.className} antialiased`}>{children}</body>
+        <body className={`${inter.className} antialiased`}>
+          <Toaster />
+          {children}
+        </body>
       </html>
     </TRPCReactProvider>
   );
