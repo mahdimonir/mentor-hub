@@ -14,6 +14,8 @@ import {
 import Link from "next/link";
 import Markdown from "react-markdown";
 import { MeetingGetOne } from "../../types";
+import { ChatProvider } from "./chat-provider";
+import { Transcript } from "./transcript";
 
 interface Props {
   data: MeetingGetOne;
@@ -46,15 +48,6 @@ export const CompletedState = ({ data }: Props) => {
             <ScrollBar orientation="horizontal" />
           </ScrollArea>
         </div>
-        <TabsContent value="recording">
-          <div className="bg-white rounded-lg border px-4 py-5">
-            <video
-              src={data.recordingUrl!}
-              className="w-full rounded-lg"
-              controls
-            />
-          </div>
-        </TabsContent>
         <TabsContent value="summary">
           <div className="bg-white rounded-lg border">
             <div className="px-4 py-5 gap-y-5 flex flex-col col-span-5">
@@ -134,6 +127,21 @@ export const CompletedState = ({ data }: Props) => {
               </div>
             </div>
           </div>
+        </TabsContent>
+        <TabsContent value="transcript">
+          <Transcript meetingId={data.id} />
+        </TabsContent>
+        <TabsContent value="recording">
+          <div className="bg-white rounded-lg border px-4 py-5">
+            <video
+              src={data.recordingUrl!}
+              className="w-full rounded-lg"
+              controls
+            />
+          </div>
+        </TabsContent>
+        <TabsContent value="chat">
+          <ChatProvider meetingId={data.id} meetingName={data.name} />
         </TabsContent>
       </Tabs>
     </div>
