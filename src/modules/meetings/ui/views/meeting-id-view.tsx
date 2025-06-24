@@ -13,7 +13,6 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "sonner";
 import { ActiveState } from "../components/active-state";
-import { CancelledState } from "../components/cancelled-state";
 import { CompletedState } from "../components/completed-state";
 import { MeetingIdViewHeader } from "../components/meeting-id-view-header";
 import { ProcessingState } from "../components/processing-state";
@@ -66,7 +65,6 @@ export const MeetingIdView = ({ meetingId }: Props) => {
 
   const isActive = data.status === "active";
   const isUpcoming = data.status === "upcoming";
-  const isCancelled = data.status === "cancelled";
   const isCompleted = data.status === "completed";
   const isProcessing = data.status === "processing";
 
@@ -86,14 +84,7 @@ export const MeetingIdView = ({ meetingId }: Props) => {
           onRemove={handleRemoveMeeting}
         />
         {isActive && <ActiveState meetingId={meetingId} />}
-        {isUpcoming && (
-          <UpcomingState
-            meetingId={meetingId}
-            onCancelMeeting={() => {}}
-            isCancelling={false}
-          />
-        )}
-        {isCancelled && <CancelledState />}
+        {isUpcoming && <UpcomingState meetingId={meetingId} />}
         {isCompleted && <CompletedState data={data} />}
         {isProcessing && <ProcessingState />}
       </div>

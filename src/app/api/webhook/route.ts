@@ -65,8 +65,7 @@ export async function POST(req: NextRequest) {
           eq(meetings.id, meetingId),
           not(eq(meetings.status, "completed")),
           not(eq(meetings.status, "active")),
-          not(eq(meetings.status, "processing")),
-          not(eq(meetings.status, "cancelled"))
+          not(eq(meetings.status, "processing"))
         )
       );
 
